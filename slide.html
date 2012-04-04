@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            .inactive {
+                color: red;
+            }
+        </style>
+        <script src="jquery-1.7.2.min.js" ></script>
+        <script src="jquery.simpleslide.js" ></script>
+        <script>
+            $(document).ready(function(){
+                $('.simpleslide').simpleslide({previousLinkId:'prev', nextLinkId:'next', effect: 'slide'});
+            });
+        </script>
+    </head>
+    <body>
+        <div class="simpleSlide">
+            <img src="images/a.jpg" id="img1" />
+            <img src="images/b.jpg" id="img2" />
+            <img src="images/c.jpg" id="img3" />
+        </div>
+        <a href="javascript:;" id="prev" >Previous</a>
+        <a href="javascript:;" id="next" >Next</a>
+    </body>
+</html>
