@@ -11,15 +11,26 @@
         <script src="jquery.simpleslide.js" ></script>
         <script>
             $(document).ready(function(){
-                $('.simpleslide').simpleslide({previousLinkId:'prev', nextLinkId:'next', effect: 'slide'});
+                $('.simpleslide').simpleslide({previousLinkId:'prev', 
+                    nextLinkId:'next', 
+                    effect: 'slide', 
+                    slideElement: 'div.test',
+                    inactiveClass: 'inactive'
+                });
             });
         </script>
     </head>
     <body>
         <div class="simpleSlide">
+            <div class="test">
             <img src="images/a.jpg" id="img1" />
+            </div>
+            <div class="test">
             <img src="images/b.jpg" id="img2" />
+            </div>
+            <div class="test">
             <img src="images/c.jpg" id="img3" />
+            </div>
         </div>
         <a href="javascript:;" id="prev" >Previous</a>
         <a href="javascript:;" id="next" >Next</a>

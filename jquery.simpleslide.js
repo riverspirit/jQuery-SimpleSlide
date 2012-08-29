@@ -17,7 +17,9 @@
         var settings = {
             previousLinkId: 'prev',
             nextLinkId: 'next',
-            effect: 'normal'
+            effect: 'normal',
+            slideElement: 'img',
+            inactiveClass: ''
         }
         
         if (options)
@@ -27,56 +29,57 @@
         
         var currentImageNo = 1;
         var thisObj = this;
-        var numImages = this.find('img').length;
+        var numImages = this.find(settings.slideElement).length;
         
-        this.find("img").hide();
-        this.find("img:nth-child("+currentImageNo+")").show();
+        console.log(this.find(settings.slideElement));
+        this.find(settings.slideElement).hide();
+        this.find(settings.slideElement+":nth-child("+currentImageNo+")").show();
 
         function changeImage(elementObj)
         {
             switch (settings.effect)
             {
                 case 'normal': {
-                        $(elementObj).find("img").hide();
-                        $(elementObj).find("img:nth-child("+currentImageNo+")").show();
+                        $(elementObj).find(settings.slideElement).hide();
+                        $(elementObj).find(settings.slideElement+":nth-child("+currentImageNo+")").show();
                         break;
                 }
                 
                 case 'fade': {
-                        $(elementObj).find("img").hide();
-                        $(elementObj).find("img:nth-child("+currentImageNo+")").fadeIn();
+                        $(elementObj).find(settings.slideElement).hide();
+                        $(elementObj).find(settings.slideElement+":nth-child("+currentImageNo+")").fadeIn();
                         break;
                 }
                 
                  case 'slide': {
-                        $(elementObj).find("img").slideUp();
-                        $(elementObj).find("img:nth-child("+currentImageNo+")").slideDown();
+                        $(elementObj).find(settings.slideElement).slideUp();
+                        $(elementObj).find(settings.slideElement+":nth-child("+currentImageNo+")").slideDown();
                         break;
                 }
                 
                 default: {
-                        $(elementObj).find("img").hide();
-                        $(elementObj).find("img:nth-child("+currentImageNo+")").fadeIn();
+                        $(elementObj).find(settings.slideElement).hide();
+                        $(elementObj).find(settings.slideElement+":nth-child("+currentImageNo+")").fadeIn();
                         break;
                 }
                 
             }
             if (numImages == currentImageNo)
             {
-                $("#"+settings.nextLinkId).addClass('inactive');
+                $("#"+settings.nextLinkId).addClass(settings.inactiveClass);
             }
             else
             {
-                $("#"+settings.nextLinkId).removeClass('inactive');
+                $("#"+settings.nextLinkId).removeClass(settings.inactiveClass);
             }
             
             if (currentImageNo == 1)
             {
-                $("#"+settings.previousLinkId).addClass('inactive');
+                $("#"+settings.previousLinkId).addClass(settings.inactiveClass);
             }
             else
             {
-                $("#"+settings.previousLinkId).removeClass('inactive');
+                $("#"+settings.previousLinkId).removeClass(settings.inactiveClass);
             }
         }
 
