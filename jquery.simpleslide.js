@@ -19,7 +19,9 @@
             nextLinkId: 'next',
             effect: 'normal',
             slideElement: 'img',
-            inactiveClass: ''
+            inactiveClass: '',
+            autoPlay: true,
+            autoPlayInterval: 3000
         }
         
         if (options)
@@ -31,7 +33,6 @@
         var thisObj = this;
         var numImages = this.find(settings.slideElement).length;
         
-        console.log(this.find(settings.slideElement));
         this.find(settings.slideElement).hide();
         this.find(settings.slideElement+":nth-child("+currentImageNo+")").show();
 
@@ -99,6 +100,21 @@
                 changeImage(thisObj);
             }
         });
+        
+        if (settings.autoPlay)
+        {
+            var timer = window.setInterval(function(){
+                if (numImages > currentImageNo)
+                {
+                    currentImageNo++;
+                }
+                else
+                {
+                    currentImageNo = 1;
+                }
+                changeImage(thisObj);
+            }, settings.autoPlayInterval);
+        }
     }
     
     
